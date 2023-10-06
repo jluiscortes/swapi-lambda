@@ -1,0 +1,86 @@
+openapi: 3.0.0
+info:
+  version: "1.0.0"
+  title: "API de Starships y People"
+servers:
+  - url: http://localhost:8080
+paths:
+  /api/people:
+    post:
+      summary: "Obtener datos de people con Id correspondiente"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+      responses:
+        "500":
+          description: "Error Internal"
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              example:
+                status: 200
+                message: "Success"
+                data:
+                  - nombre: "R2-D2"
+                    altura: "96"
+                    masa: "32"
+                    color_de_cabello: "n/a"
+                    color_de_piel: "white, blue"
+                    color_de_ojos: "red"
+                    anio_de_nacimiento: "33BBY"
+                    genero: "n/a"
+                    mundo_natal: "https://swapi.dev/api/planets/8/"
+                    peliculas:
+                      - "https://swapi.dev/api/films/1/"
+                      - "https://swapi.dev/api/films/2/"
+                      - "https://swapi.dev/api/films/3/"
+                      - "https://swapi.dev/api/films/4/"
+                      - "https://swapi.dev/api/films/5/"
+                      - "https://swapi.dev/api/films/6/"
+                    especies:
+                      - "https://swapi.dev/api/species/2/"
+                    vehiculos: []
+                    naves_espaciales: []
+                    creado: "2014-12-10T15:11:50.376000Z"
+                    editado: "2014-12-20T21:17:50.311000Z"
+  /api/starships/{id}:
+    get:
+      summary: "Obtener información de una Starship por Id correspondiente"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              example:
+                nombre: "Death Star"
+                modelo: "DS-1 Orbital Battle Station"
+                fabricante: "Imperial Department of Military Research, Sienar Fleet Systems"
+                costo_en_creditos: "1000000000000"
+                longitud: "120000"
+                velocidad_maxima: "n/a"
+                tripulacion: "342,953"
+                pasajeros: "843,342"
+                capacidad_de_carga: "1000000000000"
+                consumibles: "3 years"
+                calificacion_hiperimpulsor: "4.0"
+                clase_de_nave_espacial: "Deep Space Mobile Battlestation"
+                pilotos: []
+                peliculas:
+                  - "https://swapi.dev/api/films/1/"
+                creado: "2014-12-10T16:36:50.509000Z"
+                editado: "2014-12-20T21:26:24.783000Z"
+        "500":
+          description: "Error Internal"

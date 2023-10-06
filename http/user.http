@@ -1,0 +1,11 @@
+### Endpoint Starhips local
+GET http://localhost:8080/api/starships/9
+
+### Endpoint People local
+POST http://localhost:8080/api/people
+Content-Type: application/json
+
+{
+    "id" : "3"
+}
+
